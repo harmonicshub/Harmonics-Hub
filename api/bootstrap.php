@@ -1,6 +1,39 @@
 <?php
 declare(strict_types=1);
 
+function harmonics_send_api_headers(): void
+{
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Accept');
+}
+
+function harmonics_handle_preflight(): void
+{
+    harmonics_send_api_headers();
+
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'OPTIONS') {
+        http_response_code(204);
+        exit;
+    }
+}
+
+function harmonics_request_data(): array
+{
+    $contentType = strtolower((string) ($_SERVER['CONTENT_TYPE'] ?? ''));
+    if (str_contains($contentType, 'application/json')) {
+        $raw = file_get_contents('php://input');
+        if (!is_string($raw) || trim($raw) === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+        return is_array($decoded) ? $decoded : [];
+    }
+
+    return $_POST;
+}
+
 function harmonics_db(): PDO
 {
     static $pdo = null;
@@ -44,6 +77,7 @@ function harmonics_db(): PDO
 function harmonics_json_response(int $statusCode, array $payload): void
 {
     http_response_code($statusCode);
+    harmonics_send_api_headers();
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     exit;

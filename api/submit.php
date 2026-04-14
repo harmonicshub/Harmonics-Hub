@@ -3,26 +3,30 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+harmonics_handle_preflight();
+
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     harmonics_json_response(405, [
         'ok' => false,
         'message' => 'Method not allowed.'
     ]);
 }
 
-$formType = trim((string) ($_POST['form_type'] ?? ''));
-$firstName = trim((string) ($_POST['firstname'] ?? ''));
-$lastName = trim((string) ($_POST['lastname'] ?? ''));
-$email = trim((string) ($_POST['email'] ?? ''));
-$phone = trim((string) ($_POST['mobilenumber'] ?? ''));
-$service = trim((string) ($_POST['service'] ?? ''));
-$course = trim((string) ($_POST['course'] ?? ''));
-$level = trim((string) ($_POST['level'] ?? ''));
-$format = trim((string) ($_POST['format'] ?? ''));
-$cohort = trim((string) ($_POST['cohort'] ?? ''));
-$message = trim((string) ($_POST['message'] ?? ''));
-$sourcePage = trim((string) ($_POST['source_page'] ?? ''));
-$honeypot = trim((string) ($_POST['company_website'] ?? ''));
+$request = harmonics_request_data();
+
+$formType = trim((string) ($request['form_type'] ?? ''));
+$firstName = trim((string) ($request['firstname'] ?? ''));
+$lastName = trim((string) ($request['lastname'] ?? ''));
+$email = trim((string) ($request['email'] ?? ''));
+$phone = trim((string) ($request['mobilenumber'] ?? ''));
+$service = trim((string) ($request['service'] ?? ''));
+$course = trim((string) ($request['course'] ?? ''));
+$level = trim((string) ($request['level'] ?? ''));
+$format = trim((string) ($request['format'] ?? ''));
+$cohort = trim((string) ($request['cohort'] ?? ''));
+$message = trim((string) ($request['message'] ?? ''));
+$sourcePage = trim((string) ($request['source_page'] ?? ''));
+$honeypot = trim((string) ($request['company_website'] ?? ''));
 
 if ($honeypot !== '') {
     harmonics_json_response(200, [
