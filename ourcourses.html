@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the HARMONICS HUB academy and technology training programs for individuals, teams, and organizations.">
+  <meta name="description" content="Explore the HARMONICS HUB academy and practical tech training tracks for individuals, professionals, and organizations.">
+  <meta property="og:title" content="Academy | HARMONICS HUB">
+  <meta property="og:description" content="Discover practical courses in web development, software engineering, UI/UX, data analysis, cybersecurity, cloud computing, and digital operations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/ourcourses.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/ourcourses.html">
   <title>Academy | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="exploreourservices.html">Services</a>
@@ -26,33 +36,59 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">Academy</p>
-      <h1>Practical training tracks for learners, professionals, and company teams.</h1>
-      <p class="lead-copy">Our academy is built around employable skills, guided projects, and business-relevant learning outcomes.</p>
+      <h1>Practical tech training tracks for learners, professionals, and teams.</h1>
+      <p class="lead-copy">Our academy is built around employable skills, guided projects, mentor feedback, and business-relevant learning outcomes.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="academy-registration.html">Register for a Course</a>
+        <a class="text-link" href="#academy-courses">Browse all tracks</a>
+      </div>
     </section>
 
-    <section class="section-shell card-grid">
+    <section id="academy-courses" class="section-shell card-grid">
       <article class="feature-card reveal">
         <span class="card-number">01</span>
         <h3>Web Development</h3>
-        <p>HTML, CSS, JavaScript, responsive design, and project-based website building for real clients and brands.</p>
+        <p>HTML, CSS, JavaScript, responsive design, and project-based website building for real client scenarios.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
       </article>
       <article class="feature-card reveal delay-1">
         <span class="card-number">02</span>
         <h3>Software Engineering</h3>
-        <p>Programming fundamentals, problem solving, application logic, and collaborative development workflows.</p>
+        <p>Programming fundamentals, application logic, version control, problem solving, and collaborative workflows.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
       </article>
       <article class="feature-card reveal delay-2">
         <span class="card-number">03</span>
-        <h3>UI and Brand Design</h3>
-        <p>Visual hierarchy, digital brand systems, content layout, and interface thinking for modern digital products.</p>
+        <h3>UI/UX Design</h3>
+        <p>Wireframing, user flows, design systems, usability thinking, and interface design for digital products.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
       </article>
       <article class="feature-card reveal delay-3">
         <span class="card-number">04</span>
+        <h3>Data Analysis</h3>
+        <p>Data cleaning, spreadsheet workflows, dashboards, reporting, and insight storytelling for decision making.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
+      </article>
+      <article class="feature-card reveal">
+        <span class="card-number">05</span>
+        <h3>Cybersecurity Fundamentals</h3>
+        <p>Digital safety, threat awareness, secure habits, access control, and practical security concepts for teams.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
+      </article>
+      <article class="feature-card reveal delay-1">
+        <span class="card-number">06</span>
+        <h3>Cloud Computing</h3>
+        <p>Cloud basics, hosting, deployment workflows, storage, collaboration tools, and scalable service environments.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
+      </article>
+      <article class="feature-card reveal delay-2">
+        <span class="card-number">07</span>
         <h3>Digital Operations</h3>
-        <p>Tools, workflows, productivity systems, and digital collaboration training for business teams.</p>
+        <p>Digital tools, productivity systems, documentation habits, and collaboration processes for business teams.</p>
+        <a class="text-link" href="academy-registration.html">Join this course</a>
       </article>
     </section>
 
@@ -78,16 +114,50 @@
           <p class="plan-name">Corporate Training</p>
           <h3>Team upskilling</h3>
           <div class="price-tag">Custom workshop</div>
-          <p>Tailored learning sessions built around company workflows, tools, and productivity needs.</p>
+          <p>Tailored sessions built around company workflows, tools, and productivity needs.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section-shell split-layout academy-cta">
+      <div class="panel reveal">
+        <p class="eyebrow">Why learners choose us</p>
+        <h2>Hands-on sessions with clear outcomes and guided support.</h2>
+        <div class="pill-row">
+          <span>Live classes</span>
+          <span>Project portfolio</span>
+          <span>Mentor support</span>
+          <span>Flexible cohorts</span>
+        </div>
+        <div class="contact-points">
+          <p><strong>Delivery:</strong> Physical, virtual, and hybrid options</p>
+          <p><strong>Audience:</strong> Students, job seekers, founders, and staff teams</p>
+          <p><strong>Outcome:</strong> Practical skills you can apply immediately</p>
+        </div>
+      </div>
+
+      <div class="panel reveal delay-1">
+        <p class="eyebrow">Ready to start?</p>
+        <h2>Reserve your spot in the next academy cohort.</h2>
+        <p>Tell us your preferred course, level, and learning format, and we will prepare the best registration path for you.</p>
+        <div class="stack-actions">
+          <a class="button button-primary" href="academy-registration.html">Go to Registration</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>Practical technology education with real-world focus.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Practical technology education with real-world focus.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>

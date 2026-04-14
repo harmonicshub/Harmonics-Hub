@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse HARMONICS HUB digital resources, starter kits, and support packages.">
+  <meta name="description" content="Browse HARMONICS HUB resource downloads, starter kits, and lead magnets for brand, website, and training planning.">
+  <meta property="og:title" content="Resources | HARMONICS HUB">
+  <meta property="og:description" content="Download project planning resources and request custom support packages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/shop.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/shop.html">
   <title>Resources | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="exploreourservices.html">Services</a>
@@ -26,39 +36,46 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">Resources</p>
-      <h1>Digital toolkits and support-ready packages for teams that want to move faster.</h1>
-      <p class="lead-copy">A resource page for packaged offers, starter kits, and guided support options you can request from our team.</p>
+      <h1>Download planning assets and request support-ready packages.</h1>
+      <p class="lead-copy">This page now offers real downloadable lead magnets plus service packages visitors can act on.</p>
     </section>
 
-    <section class="section-shell resource-grid">
-      <article class="content-card reveal">
-        <p class="content-tag">Brand Kit</p>
-        <h2>Startup identity starter</h2>
-        <p>Logo direction, color palette, typography suggestions, and ready-to-use social templates for a cleaner launch.</p>
+    <section class="section-shell download-grid">
+      <article class="download-card reveal">
+        <span class="download-badge">Branded Worksheet</span>
+        <h2>Website project brief checklist</h2>
+        <p>A polished planning worksheet with brand styling, fill-in prompts, and print-ready formatting for website scoping conversations.</p>
+        <a class="text-link" href="downloads/website-project-brief.html" target="_blank" rel="noopener">Open worksheet</a>
+      </article>
+      <article class="download-card reveal delay-1">
+        <span class="download-badge">Branded Worksheet</span>
+        <h2>Training needs planning worksheet</h2>
+        <p>A better-formatted planner for defining learner groups, outcomes, schedule preferences, and follow-up support needs.</p>
+        <a class="text-link" href="downloads/training-needs-planner.html" target="_blank" rel="noopener">Open worksheet</a>
+      </article>
+      <article class="download-card reveal delay-2">
+        <span class="download-badge">Support Package</span>
+        <h2>Website and onboarding launch support</h2>
+        <p>For organizations that want a website build paired with messaging, launch coordination, and onboarding support.</p>
         <a class="text-link" href="contactus.html">Request this package</a>
-      </article>
-      <article class="content-card reveal delay-1">
-        <p class="content-tag">Website Kit</p>
-        <h2>Business website launch pack</h2>
-        <p>For organizations that need a polished web presence quickly, with clear structure and conversion-focused messaging.</p>
-        <a class="text-link" href="contactus.html">Book a consultation</a>
-      </article>
-      <article class="content-card reveal delay-2">
-        <p class="content-tag">Training Kit</p>
-        <h2>Corporate tech upskilling session</h2>
-        <p>Short workshops for productivity tools, digital collaboration, web basics, and practical team enablement.</p>
-        <a class="text-link" href="ourcourses.html">View training options</a>
       </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>Useful packages for brand, web, and team growth.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Useful downloads and planning tools for brand, web, and team growth.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>

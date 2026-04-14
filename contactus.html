@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact HARMONICS HUB for graphics design, web development, software solutions, tech training, or IT infrastructure support.">
+  <meta name="description" content="Contact HARMONICS HUB for design, web development, software solutions, academy training, or managed IT support.">
+  <meta property="og:title" content="Contact HARMONICS HUB">
+  <meta property="og:description" content="Send a project request, training inquiry, or support request through our structured intake form.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/contactus.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/contactus.html">
   <title>Contact | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="exploreourservices.html">Services</a>
@@ -26,11 +36,11 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">Contact</p>
       <h1>Tell us what you want to build, improve, or support.</h1>
-      <p class="lead-copy">Use the form below and we will prepare the right next step for your team, project, or organization.</p>
+      <p class="lead-copy">This is now a direct business intake form designed to capture and organize your inquiry properly before follow-up.</p>
     </section>
 
     <section class="section-shell contact-layout">
@@ -52,7 +62,18 @@
       </div>
 
       <div class="panel reveal delay-1">
-        <form id="contact-form" class="contact-form" novalidate>
+        <form
+          id="contact-form"
+          class="contact-form"
+          action="api/submit.php"
+          method="post"
+          data-form-type="inquiry"
+          data-status-target="form-status"
+          novalidate
+        >
+          <input type="hidden" name="form_type" value="inquiry">
+          <input type="hidden" name="source_page" value="contactus.html">
+          <input type="text" name="company_website" class="form-honeypot" tabindex="-1" autocomplete="off">
           <div class="form-grid">
             <label>
               First name
@@ -94,9 +115,16 @@
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>We design, build, train, and support.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Professional project intake for design, development, academy, and support requests.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>

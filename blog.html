@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Read insights from HARMONICS HUB on design, software, tech education, and IT operations.">
+  <meta name="description" content="Read insights from HARMONICS HUB on design systems, software delivery, tech education, and IT operations.">
+  <meta property="og:title" content="Insights | HARMONICS HUB">
+  <meta property="og:description" content="Article-based insights on design, software, training, and support operations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/blog.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/blog.html">
   <title>Insights | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="exploreourservices.html">Services</a>
@@ -26,45 +36,58 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">Insights</p>
       <h1>Ideas, frameworks, and practical lessons from our work in tech.</h1>
-      <p class="lead-copy">A simple editorial space for sharing what we learn about design systems, delivery, upskilling, and IT operations.</p>
+      <p class="lead-copy">This section now works as a real article hub with detail pages, publish dates, authors, and shareable slugs.</p>
     </section>
 
     <section class="section-shell article-grid">
       <article class="content-card reveal">
         <p class="content-tag">Design</p>
-        <h2>Why strong brand systems help technology companies sell with more confidence</h2>
+        <div class="article-meta">
+          <span>April 14, 2026</span>
+          <span>Harmonics Hub Editorial</span>
+        </div>
+        <h2>Why strong design systems help tech companies earn trust faster</h2>
         <p>Visual consistency affects trust, speed of communication, and how polished a business appears across digital channels.</p>
-        <a class="text-link" href="contactus.html">Request brand support</a>
+        <a class="text-link" href="insights-design-systems-trust.html">Read article</a>
       </article>
       <article class="content-card reveal delay-1">
         <p class="content-tag">Development</p>
-        <h2>What growing businesses should look for before building a custom software tool</h2>
+        <div class="article-meta">
+          <span>April 14, 2026</span>
+          <span>Harmonics Hub Editorial</span>
+        </div>
+        <h2>What growing businesses should check before building custom software</h2>
         <p>Good software projects start with workflow clarity, user priorities, and a realistic scope tied to business outcomes.</p>
-        <a class="text-link" href="exploreourservices.html">See development services</a>
+        <a class="text-link" href="insights-custom-software-checklist.html">Read article</a>
       </article>
       <article class="content-card reveal delay-2">
         <p class="content-tag">Training</p>
+        <div class="article-meta">
+          <span>April 14, 2026</span>
+          <span>Harmonics Hub Editorial</span>
+        </div>
         <h2>How practical tech training improves team performance faster than theory-heavy sessions</h2>
         <p>People retain more when training mirrors the tasks, tools, and decisions they face in real working environments.</p>
-        <a class="text-link" href="ourcourses.html">Explore academy tracks</a>
-      </article>
-      <article class="content-card reveal">
-        <p class="content-tag">IT Operations</p>
-        <h2>Three early signs your company needs better infrastructure management</h2>
-        <p>Repeated downtime, device confusion, and missing documentation usually signal the need for a stronger support structure.</p>
-        <a class="text-link" href="contactus.html">Talk to our team</a>
+        <a class="text-link" href="insights-practical-training-performance.html">Read article</a>
       </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>Insights on design, software, learning, and support.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Insights on design, software, learning, and support.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>

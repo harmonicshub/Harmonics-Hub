@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn about HARMONICS HUB, our mission, and how we help companies with design, software, training, and IT management.">
+  <meta name="description" content="Learn about HARMONICS HUB, our delivery model, and how we help companies with design, software, training, and IT support.">
+  <meta property="og:title" content="About | HARMONICS HUB">
+  <meta property="og:description" content="How HARMONICS HUB combines creative clarity, digital product delivery, practical tech education, and support services.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/about.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/about.html">
   <title>About | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a class="active" href="about.html">About</a>
         <a href="exploreourservices.html">Services</a>
@@ -26,14 +36,17 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">About us</p>
       <h1>We help organizations grow through creative clarity and technical strength.</h1>
       <p class="lead-copy">
         HARMONICS HUB combines design thinking, digital product delivery, practical tech education, and managed
-        infrastructure support so businesses can move with more confidence.
+        support so businesses can move with more confidence.
       </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="contactus.html">Talk to Our Team</a>
+      </div>
     </section>
 
     <section class="section-shell split-layout">
@@ -41,7 +54,7 @@
         <p class="eyebrow">Our mission</p>
         <h2>Make technology more useful, more human, and easier to operate.</h2>
         <p>
-          We believe companies should not have to choose between strong design, working software, skilled teams,
+          We believe organizations should not have to choose between strong design, working software, skilled teams,
           and stable systems. Our approach connects those pieces so they reinforce each other.
         </p>
       </div>
@@ -78,7 +91,7 @@
       </article>
       <article>
         <strong>Built for teams</strong>
-        <span>Solutions made for startups, schools, SMEs, and established businesses.</span>
+        <span>Solutions shaped for startups, schools, SMEs, and established organizations.</span>
       </article>
       <article>
         <strong>Long-term mindset</strong>
@@ -88,9 +101,16 @@
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>Creative technology services for modern businesses.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Creative technology services for modern businesses.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for a HARMONICS HUB academy course in web development, software engineering, UI/UX design, data analysis, cybersecurity, cloud computing, or digital operations.">
+  <meta property="og:title" content="Academy Registration | HARMONICS HUB">
+  <meta property="og:description" content="Submit your course registration through our owned academy intake flow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/academy-registration.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/academy-registration.html">
+  <title>Academy Registration | HARMONICS HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "HARMONICS HUB Academy Courses",
+      "provider": {
+        "@type": "Organization",
+        "name": "HARMONICS HUB",
+        "url": "https://harmonicshub.com/"
+      },
+      "url": "https://harmonicshub.com/academy-registration.html",
+      "description": "Multi-track academy registration covering web development, software engineering, UI/UX, data analysis, cybersecurity, cloud computing, and digital operations."
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="exploreourservices.html">Services</a>
+        <a class="active" href="ourcourses.html">Academy</a>
+        <a href="blog.html">Insights</a>
+        <a href="shop.html">Resources</a>
+        <a href="contactus.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero section-shell reveal">
+      <p class="eyebrow">Academy Registration</p>
+      <h1>Apply for your preferred course and learning format.</h1>
+      <p class="lead-copy">Complete the registration form and our academy team will follow up with cohort details, schedule options, and your next steps.</p>
+    </section>
+
+    <section class="section-shell contact-layout">
+      <div class="panel reveal">
+        <p class="eyebrow">Available tracks</p>
+        <h2>Choose the program that fits your current goal.</h2>
+        <div class="pill-row">
+          <span>Web Development</span>
+          <span>Software Engineering</span>
+          <span>UI/UX Design</span>
+          <span>Data Analysis</span>
+          <span>Cybersecurity</span>
+          <span>Cloud Computing</span>
+          <span>Digital Operations</span>
+        </div>
+        <div class="contact-points">
+          <p><strong>Study options:</strong> Weekday, weekend, and intensive cohorts</p>
+          <p><strong>Formats:</strong> On-site, online, and hybrid learning</p>
+          <p><strong>Support:</strong> Mentor guidance, projects, and onboarding help</p>
+        </div>
+      </div>
+
+      <div class="panel reveal delay-1">
+        <form
+          id="academy-registration-form"
+          class="contact-form"
+          action="api/submit.php"
+          method="post"
+          data-form-type="academy-registration"
+          data-status-target="academy-form-status"
+          novalidate
+        >
+          <input type="hidden" name="form_type" value="academy-registration">
+          <input type="hidden" name="source_page" value="academy-registration.html">
+          <input type="text" name="company_website" class="form-honeypot" tabindex="-1" autocomplete="off">
+          <div class="form-grid">
+            <label>
+              First name
+              <input type="text" name="firstname" placeholder="Ada" required>
+            </label>
+            <label>
+              Last name
+              <input type="text" name="lastname" placeholder="Okafor" required>
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" placeholder="you@example.com" required>
+            </label>
+            <label>
+              Mobile number
+              <input type="tel" name="mobilenumber" placeholder="+234 800 000 0000" required>
+            </label>
+            <label>
+              Preferred course
+              <select name="course" required>
+                <option value="">Select a course</option>
+                <option>Web Development</option>
+                <option>Software Engineering</option>
+                <option>UI/UX Design</option>
+                <option>Data Analysis</option>
+                <option>Cybersecurity Fundamentals</option>
+                <option>Cloud Computing</option>
+                <option>Digital Operations</option>
+              </select>
+            </label>
+            <label>
+              Experience level
+              <select name="level" required>
+                <option value="">Select your level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </label>
+            <label>
+              Learning format
+              <select name="format" required>
+                <option value="">Select a format</option>
+                <option>On-site</option>
+                <option>Online</option>
+                <option>Hybrid</option>
+              </select>
+            </label>
+            <label>
+              Preferred cohort
+              <select name="cohort" required>
+                <option value="">Select a cohort</option>
+                <option>Weekday</option>
+                <option>Weekend</option>
+                <option>Intensive bootcamp</option>
+              </select>
+            </label>
+            <label class="full-span">
+              Learning goals
+              <textarea name="message" rows="7" placeholder="Tell us what you want to learn, build, or achieve from this academy program." required></textarea>
+            </label>
+          </div>
+          <button class="button button-primary" type="submit">Submit Registration</button>
+          <p id="academy-form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Structured academy registration with practical learning pathways.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <small id="site-year"></small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

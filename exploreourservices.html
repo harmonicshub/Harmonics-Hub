@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the design, development, training, and infrastructure services offered by HARMONICS HUB.">
+  <meta name="description" content="Explore the design, development, training, and support services offered by HARMONICS HUB.">
+  <meta property="og:title" content="Services | HARMONICS HUB">
+  <meta property="og:description" content="Integrated creative, technical, and operational services shaped around business growth.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonicshub.com/exploreourservices.html">
+  <meta property="og:image" content="https://harmonicshub.com/images/logo.png">
+  <link rel="canonical" href="https://harmonicshub.com/exploreourservices.html">
   <title>Services | HARMONICS HUB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +17,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="brand-wrap">
       <a class="brand" href="index.html"><img src="images/logo.png" alt="Harmonics Hub logo"><span>HARMONICS HUB</span></a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation" data-nav-toggle>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a class="active" href="exploreourservices.html">Services</a>
@@ -26,11 +36,14 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell reveal">
       <p class="eyebrow">Services</p>
       <h1>Creative, technical, and operational services shaped around business growth.</h1>
       <p class="lead-copy">We support brands from strategy through execution, with services designed to work together instead of in silos.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="contactus.html">Request a Consultation</a>
+      </div>
     </section>
 
     <section class="section-shell service-stack">
@@ -66,9 +79,16 @@
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>HARMONICS HUB</p>
-      <span>Integrated services for modern companies.</span>
+    <div class="site-footer-meta">
+      <div>
+        <p>HARMONICS HUB</p>
+        <span>Integrated services for modern companies.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
     <small id="site-year"></small>
   </footer>
