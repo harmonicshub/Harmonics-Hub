@@ -1,10 +1,10 @@
 import React from "react";
-import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { InfoCard } from "../components/InfoCard";
+import { ScreenScroll } from "../components/ScreenScroll";
 import { SectionHeader } from "../components/SectionHeader";
 import { useContent } from "../context/ContentContext";
-import { theme } from "../theme";
 import { openLink } from "../utils";
 
 export function ServicesScreen() {
@@ -12,11 +12,7 @@ export function ServicesScreen() {
   const { company, services } = content;
 
   return (
-    <ScrollView
-      style={styles.screen}
-      contentContainerStyle={styles.content}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={theme.colors.accent} />}
-    >
+    <ScreenScroll refreshing={refreshing} onRefresh={refresh}>
       <SectionHeader
         eyebrow="Services"
         title="Creative, technical, and operational services shaped around business growth."
@@ -39,19 +35,11 @@ export function ServicesScreen() {
         label="Request a Consultation"
         onPress={() => openLink(`${company.website}contactus.html`)}
       />
-    </ScrollView>
+    </ScreenScroll>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  content: {
-    padding: 20,
-    gap: 18,
-    paddingBottom: 44
-  },
   cardStack: {
     gap: 14
   }

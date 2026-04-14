@@ -1,11 +1,11 @@
 import React from "react";
-import { RefreshControl, ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { InfoCard } from "../components/InfoCard";
 import { PillRow } from "../components/PillRow";
+import { ScreenScroll } from "../components/ScreenScroll";
 import { SectionHeader } from "../components/SectionHeader";
 import { useContent } from "../context/ContentContext";
-import { theme } from "../theme";
 import { openLink } from "../utils";
 
 export function AcademyScreen() {
@@ -13,11 +13,7 @@ export function AcademyScreen() {
   const { academyFormats, academyTracks, company } = content;
 
   return (
-    <ScrollView
-      style={styles.screen}
-      contentContainerStyle={styles.content}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={theme.colors.accent} />}
-    >
+    <ScreenScroll refreshing={refreshing} onRefresh={refresh}>
       <SectionHeader
         eyebrow="Academy"
         title="Practical tech training tracks for learners, professionals, and teams."
@@ -58,19 +54,11 @@ export function AcademyScreen() {
         label="Open Registration"
         onPress={() => openLink(`${company.website}academy-registration.html`)}
       />
-    </ScrollView>
+    </ScreenScroll>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  content: {
-    padding: 20,
-    gap: 18,
-    paddingBottom: 44
-  },
   cardStack: {
     gap: 14
   }

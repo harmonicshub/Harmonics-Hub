@@ -39,6 +39,8 @@ Use these helper scripts from PowerShell:
 .\build-apk-local.ps1
 ```
 
+`start-local.ps1` uses Expo offline mode, a fixed port, non-interactive startup, and a reduced worker count to be more reliable on this machine.
+
 Then open the Expo project on:
 
 - Android emulator

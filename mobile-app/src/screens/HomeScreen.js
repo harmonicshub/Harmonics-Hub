@@ -1,8 +1,9 @@
 import React from "react";
-import { Image, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { InfoCard } from "../components/InfoCard";
 import { PillRow } from "../components/PillRow";
+import { ScreenScroll } from "../components/ScreenScroll";
 import { SectionHeader } from "../components/SectionHeader";
 import { useContent } from "../context/ContentContext";
 import { theme } from "../theme";
@@ -13,12 +14,9 @@ export function HomeScreen() {
   const { company, resources, services, trustSignals } = content;
 
   return (
-    <ScrollView
-      style={styles.screen}
-      contentContainerStyle={styles.content}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={theme.colors.accent} />}
-    >
+    <ScreenScroll refreshing={refreshing} onRefresh={refresh}>
       <View style={styles.hero}>
+        <View style={styles.heroGlow} />
         <View style={styles.brandRow}>
           <Image
             source={{ uri: "https://harmonicshub.com/images/logo.png" }}
@@ -31,7 +29,9 @@ export function HomeScreen() {
         </View>
 
         <SectionHeader eyebrow="Creative technology company" title={company.heroTitle} body={company.heroText} />
-        <Text style={styles.liveMeta}>{isRemote ? "Live content connected" : "Using built-in fallback content"}</Text>
+        <View style={styles.livePill}>
+          <Text style={styles.liveMeta}>{isRemote ? "Live content connected" : "Using built-in fallback content"}</Text>
+        </View>
 
         <View style={styles.actionStack}>
           <ActionButton label="Visit Website" onPress={() => openLink(company.website)} />
@@ -41,17 +41,13 @@ export function HomeScreen() {
             onPress={() => sendEmail(company.contactEmail)}
           />
         </View>
-      </View>
 
-      <View style={styles.section}>
-        <SectionHeader
-          eyebrow="Trust Signals"
-          title="A mobile snapshot of what clients can expect."
-          body="The same business positioning from the website, translated into a faster app format."
-        />
-        <View style={styles.cardStack}>
+        <View style={styles.heroBand}>
           {trustSignals.map((item) => (
-            <InfoCard key={item.title} title={item.title} body={item.body} />
+            <View key={item.title} style={styles.heroBandItem}>
+              <Text style={styles.heroBandTitle}>{item.title}</Text>
+              <Text style={styles.heroBandText}>{item.body}</Text>
+            </View>
           ))}
         </View>
       </View>
@@ -76,15 +72,16 @@ export function HomeScreen() {
         <SectionHeader
           eyebrow="Core Capabilities"
           title="One partner for design, product, training, and support."
+          body="This first-pass app keeps the brand promise tight and action-focused on mobile."
         />
         <View style={styles.cardStack}>
-          {services.slice(0, 2).map((service) => (
+          {services.map((service, index) => (
             <InfoCard
               key={service.tag}
               tag={service.tag}
               title={service.title}
               body={service.body}
-              accent
+              accent={index % 2 === 0}
             />
           ))}
         </View>
@@ -108,27 +105,29 @@ export function HomeScreen() {
           ))}
         </View>
       </View>
-    </ScrollView>
+    </ScreenScroll>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  content: {
-    padding: 20,
-    gap: 28,
-    paddingBottom: 44
-  },
   hero: {
     gap: 22,
     padding: 22,
     borderRadius: theme.radius.lg,
-    backgroundColor: theme.colors.panel,
+    backgroundColor: theme.colors.poster,
     borderWidth: 1,
     borderColor: theme.colors.line,
+    overflow: "hidden",
     ...theme.shadows.card
+  },
+  heroGlow: {
+    position: "absolute",
+    top: -40,
+    right: -30,
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    backgroundColor: "rgba(109, 242, 207, 0.14)"
   },
   brandRow: {
     flexDirection: "row",
@@ -156,12 +155,42 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 1.6
   },
+  livePill: {
+    alignSelf: "flex-start",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: theme.radius.pill,
+    backgroundColor: "rgba(255,255,255,0.05)",
+    borderWidth: 1,
+    borderColor: theme.colors.line
+  },
   liveMeta: {
     color: theme.colors.muted,
-    fontSize: 13
+    fontSize: 12,
+    fontWeight: "700"
   },
   actionStack: {
     gap: 12
+  },
+  heroBand: {
+    gap: 14,
+    paddingTop: 8
+  },
+  heroBandItem: {
+    gap: 6,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(255,255,255,0.06)"
+  },
+  heroBandTitle: {
+    color: theme.colors.text,
+    fontSize: 15,
+    fontWeight: "800"
+  },
+  heroBandText: {
+    color: theme.colors.muted,
+    fontSize: 14,
+    lineHeight: 22
   },
   section: {
     gap: 16

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Alert, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { submitForm } from "../api";
 import { ActionButton } from "../components/ActionButton";
 import { Field } from "../components/Field";
 import { PillRow } from "../components/PillRow";
+import { ScreenScroll } from "../components/ScreenScroll";
 import { SectionHeader } from "../components/SectionHeader";
 import { SelectChipGroup } from "../components/SelectChipGroup";
 import { useContent } from "../context/ContentContext";
@@ -124,11 +125,7 @@ export function ContactScreen() {
   }
 
   return (
-    <ScrollView
-      style={styles.screen}
-      contentContainerStyle={styles.content}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={theme.colors.accent} />}
-    >
+    <ScreenScroll refreshing={refreshing} onRefresh={refresh}>
       <SectionHeader
         eyebrow="Contact"
         title="Tell us what you want to build, improve, or support."
@@ -298,19 +295,11 @@ export function ContactScreen() {
           />
         </View>
       )}
-    </ScrollView>
+    </ScreenScroll>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  content: {
-    padding: 20,
-    gap: 18,
-    paddingBottom: 44
-  },
   contactPanel: {
     backgroundColor: theme.colors.panel,
     borderRadius: theme.radius.md,

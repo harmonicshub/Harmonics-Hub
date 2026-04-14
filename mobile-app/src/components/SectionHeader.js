@@ -18,20 +18,20 @@ const styles = StyleSheet.create({
   },
   eyebrow: {
     color: theme.colors.accentDeep,
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "700",
-    letterSpacing: 1.8,
+    letterSpacing: 2,
     textTransform: "uppercase"
   },
   title: {
     color: theme.colors.text,
-    fontSize: 28,
-    lineHeight: 34,
+    fontSize: 30,
+    lineHeight: 36,
     fontWeight: "800"
   },
   body: {
     color: theme.colors.muted,
     fontSize: 15,
-    lineHeight: 24
+    lineHeight: 25
   }
 });
