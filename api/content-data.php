@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 declare(strict_types=1);
 
 function harmonics_content_payload(): array
@@ -6,8 +6,8 @@ function harmonics_content_payload(): array
     return [
         'company' => [
             'name' => 'HARMONICS HUB',
-            'website' => 'https://harmonicshub.com/',
-            'contactEmail' => 'hello@harmonicshub.com',
+            'website' => 'https://harmonicshub.ng/',
+            'contactEmail' => 'hello@harmonicshub.ng',
             'responseWindow' => 'Within 1-2 business days',
             'heroTitle' => 'We design brands, build software, train teams, and support business operations.',
             'heroText' => 'HARMONICS HUB helps organizations look sharper, move faster, and operate with more confidence through brand design, web and software development, practical technology education, and dependable IT support.',
@@ -102,19 +102,19 @@ function harmonics_content_payload(): array
                 'title' => 'Website project brief checklist',
                 'badge' => 'Branded Worksheet',
                 'description' => 'A polished planning worksheet with fill-in prompts and print-ready formatting for website scoping conversations.',
-                'url' => 'https://harmonicshub.com/downloads/website-project-brief.html'
+                'url' => 'https://harmonicshub.ng/downloads/website-project-brief.html'
             ],
             [
                 'title' => 'Training needs planning worksheet',
                 'badge' => 'Branded Worksheet',
                 'description' => 'A planner for defining learner groups, outcomes, schedule preferences, and follow-up support needs.',
-                'url' => 'https://harmonicshub.com/downloads/training-needs-planner.html'
+                'url' => 'https://harmonicshub.ng/downloads/training-needs-planner.html'
             ],
             [
                 'title' => 'Website and onboarding launch support',
                 'badge' => 'Support Package',
                 'description' => 'For organizations that want a website build paired with messaging, launch coordination, and onboarding support.',
-                'url' => 'https://harmonicshub.com/contactus.html'
+                'url' => 'https://harmonicshub.ng/contactus.html'
             ]
         ],
         'insights' => [
@@ -122,19 +122,19 @@ function harmonics_content_payload(): array
                 'category' => 'Design',
                 'title' => 'Why strong design systems help tech companies earn trust faster',
                 'summary' => 'Visual consistency affects trust, speed of communication, and how polished a business appears across digital channels.',
-                'url' => 'https://harmonicshub.com/insights-design-systems-trust.html'
+                'url' => 'https://harmonicshub.ng/insights-design-systems-trust.html'
             ],
             [
                 'category' => 'Development',
                 'title' => 'What growing businesses should check before building custom software',
                 'summary' => 'Good software projects start with workflow clarity, user priorities, and a realistic scope tied to business outcomes.',
-                'url' => 'https://harmonicshub.com/insights-custom-software-checklist.html'
+                'url' => 'https://harmonicshub.ng/insights-custom-software-checklist.html'
             ],
             [
                 'category' => 'Training',
                 'title' => 'How practical tech training improves team performance faster than theory-heavy sessions',
                 'summary' => 'People retain more when training mirrors the tasks, tools, and decisions they face in real working environments.',
-                'url' => 'https://harmonicshub.com/insights-practical-training-performance.html'
+                'url' => 'https://harmonicshub.ng/insights-practical-training-performance.html'
             ]
         ],
         'contactServices' => [
@@ -164,3 +164,4 @@ function harmonics_content_payload(): array
         ]
     ];
 }
+
