@@ -160,6 +160,8 @@ This website represents the HARMONICS HUB brand and business offering. Content, 
 
 Website: [harmonicshub.ng](https://harmonicshub.ng/)  
 Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
+Website: [harmonicshub.ng](https://harmonicshub.ng/)  
+Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
 
 ## License
 
