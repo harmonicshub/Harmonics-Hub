@@ -1,4 +1,4 @@
-# HARMONICS HUB Website
+﻿# HARMONICS HUB Website
 
 ![HARMONICS HUB Logo](images/logo.png)
 
@@ -158,9 +158,12 @@ This website represents the HARMONICS HUB brand and business offering. Content, 
 
 ## Contact
 
-Website: [harmonicshub.com](https://harmonicshub.ng/)  
-Email: [hello@harmonicshub.com](mailto:hello@harmonicshub.ng)
+Website: [harmonicshub.ng](https://harmonicshub.ng/)  
+Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
+Website: [harmonicshub.ng](https://harmonicshub.ng/)  
+Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
 
 ## License
 
 All rights reserved unless otherwise stated by HARMONICS HUB.
+
