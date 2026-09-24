@@ -1,149 +1,199 @@
-const yearTarget = document.getElementById("site-year");
-if (yearTarget) {
-  yearTarget.textContent = `Copyright ${new Date().getFullYear()} HARMONICS HUB`;
+// Current year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  })
+);
+
+// Scroll reveal (respects reduced motion)
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 }
 
-const body = document.body;
-const navToggle = document.querySelector("[data-nav-toggle]");
-const siteNav = document.getElementById("site-nav");
+// Contact form -> sends details straight to the company email via FormSubmit (free service).
+// NOTE: the very first submission triggers a one-time activation email to
+// harmoniicshub@gmail.com — open it and click "Activate" once, then all
+// future messages arrive directly in the inbox.
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const note = document.getElementById('formNote');
+  const btn = this.querySelector('button[type="submit"]');
+  const name = this.name.value.trim();
+  const email = this.email.value.trim();
+  const subject = this.subject.value.trim();
+  const message = this.message.value.trim();
 
-if (navToggle && siteNav && body) {
-  const closeNav = () => {
-    body.classList.remove("nav-open");
-    navToggle.setAttribute("aria-expanded", "false");
-  };
-
-  navToggle.addEventListener("click", () => {
-    const isOpen = body.classList.toggle("nav-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeNav);
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 980) {
-      closeNav();
-    }
-  });
-}
-
-const cookiePreferenceKey = "harmonicsCookiePreference";
-const savedCookiePreference = localStorage.getItem(cookiePreferenceKey);
-
-if (!savedCookiePreference) {
-  const cookieBanner = document.createElement("aside");
-  cookieBanner.className = "cookie-banner";
-  cookieBanner.setAttribute("role", "dialog");
-  cookieBanner.setAttribute("aria-live", "polite");
-  cookieBanner.setAttribute("aria-label", "Privacy notice");
-  cookieBanner.innerHTML = `
-    <p class="cookie-banner-title">Privacy Notice</p>
-    <p>We only use essential browser storage to remember your privacy preference and keep this site working smoothly. We do not run advertising trackers on this interface.</p>
-    <div class="cookie-banner-actions">
-      <button type="button" class="button button-primary" id="cookie-accept">Understood</button>
-      <button type="button" class="button button-secondary" id="cookie-close">Dismiss</button>
-    </div>
-  `;
-
-  document.body.appendChild(cookieBanner);
-
-  const saveCookiePreference = (value) => {
-    localStorage.setItem(cookiePreferenceKey, value);
-    cookieBanner.remove();
-  };
-
-  const cookieAcceptButton = document.getElementById("cookie-accept");
-  const cookieCloseButton = document.getElementById("cookie-close");
-
-  if (cookieAcceptButton) {
-    cookieAcceptButton.addEventListener("click", () => saveCookiePreference("accepted"));
+  if (!name || !email || !subject || !message) {
+    note.className = 'form-note err';
+    note.textContent = 'Please fill in every field before sending.';
+    return;
   }
-
-  if (cookieCloseButton) {
-    cookieCloseButton.addEventListener("click", () => saveCookiePreference("dismissed"));
-  }
-}
-
-const formConfigs = {
-  inquiry: {
-    requiredFields: ["firstname", "lastname", "email", "mobilenumber", "service", "message"],
-    successMessage: "Your inquiry has been submitted successfully. Our team will get back to you soon."
-  },
-  "academy-registration": {
-    requiredFields: ["firstname", "lastname", "email", "mobilenumber", "course", "level", "format", "cohort", "message"],
-    successMessage: "Your academy registration has been submitted successfully. The academy team will follow up with next steps."
-  }
-};
-
-document.querySelectorAll("form[data-form-type], #contact-form").forEach((form) => {
-  const formType = form.dataset.formType || "inquiry";
-  const config = formConfigs[formType];
-  const statusId = form.dataset.statusTarget || "form-status";
-  const formStatus = document.getElementById(statusId);
-  const endpoint = form.getAttribute("action") || "api/submit.php";
-  const submitButton = form.querySelector('button[type="submit"]');
-  const defaultButtonLabel = submitButton ? submitButton.textContent : "";
-
-  if (!config || !formStatus) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    note.className = 'form-note err';
+    note.textContent = 'Please enter a valid email address.';
     return;
   }
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/harmoniicshub@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        _subject: 'Website enquiry: ' + subject,
+        message: message,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+    if (!res.ok) throw new Error('Request failed');
+    note.className = 'form-note ok';
+    note.textContent = 'Message sent! We will get back to you shortly.';
+    this.reset();
+  } catch (err) {
+    note.className = 'form-note err';
+    note.textContent = 'Could not send right now. Please chat us on WhatsApp or email harmoniicshub@gmail.com.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send message';
+  }
+});
 
-    const formData = new FormData(form);
-    const entries = Object.fromEntries(formData.entries());
-    const missingField = config.requiredFields.find((field) => !String(entries[field] || "").trim());
+// Training registration form -> sends straight to the company email via FormSubmit.
+const registerForm = document.getElementById('registerForm');
+if (registerForm) registerForm.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const note = document.getElementById('registerNote');
+  const btn = this.querySelector('button[type="submit"]');
+  const name = this.name.value.trim();
+  const phone = this.phone.value.trim();
+  const email = this.email.value.trim();
+  const course = this.course.value;
+  const mode = this.mode.value;
 
-    if (missingField) {
-      formStatus.textContent = "Please complete all fields before submitting the form.";
-      formStatus.className = "form-status error";
-      return;
-    }
+  if (!name || !phone || !email || !course || !mode) {
+    note.className = 'form-note err';
+    note.textContent = 'Please fill in every field before registering.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    note.className = 'form-note err';
+    note.textContent = 'Please enter a valid email address.';
+    return;
+  }
 
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(entries.email);
-    if (!emailOk) {
-      formStatus.textContent = "Please enter a valid email address.";
-      formStatus.className = "form-status error";
-      return;
-    }
+  btn.disabled = true;
+  btn.textContent = 'Registering…';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/harmoniicshub@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        email: email,
+        course: course,
+        mode: mode,
+        _subject: 'Course registration: ' + course,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+    if (!res.ok) throw new Error('Request failed');
+    note.className = 'form-note ok';
+    note.textContent = 'Registration received! We will contact you with the next start date and fees.';
+    this.reset();
+  } catch (err) {
+    note.className = 'form-note err';
+    note.textContent = 'Could not register right now. Please chat us on WhatsApp instead.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Register';
+  }
+});
 
-    try {
-      formStatus.textContent = "Submitting...";
-      formStatus.className = "form-status";
-      form.setAttribute("aria-busy", "true");
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
-      }
+// Summer Classes registration form -> sends straight to the company email via FormSubmit.
+const summerForm = document.getElementById('summerForm');
+if (summerForm) summerForm.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const note = document.getElementById('summerNote');
+  const btn = this.querySelector('button[type="submit"]');
+  const registeringFor = this.registering_for.value;
+  const name = this.name.value.trim();
+  const phone = this.phone.value.trim();
+  const email = this.email.value.trim();
+  const course = this.course.value;
+  const location = this.location.value;
 
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json"
-        },
-        body: formData
-      });
+  if (!registeringFor || !name || !phone || !email || !course || !location) {
+    note.className = 'form-note err';
+    note.textContent = 'Please fill in every field before registering.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    note.className = 'form-note err';
+    note.textContent = 'Please enter a valid email address.';
+    return;
+  }
 
-      const payload = await response.json().catch(() => ({}));
+  btn.disabled = true;
+  btn.textContent = 'Registering…';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/harmoniicshub@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        registering_for: registeringFor,
+        name: name,
+        phone: phone,
+        email: email,
+        course: course,
+        location: location,
+        _subject: 'Summer Classes registration: ' + course + ' (' + location + ')',
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+    if (!res.ok) throw new Error('Request failed');
+    note.className = 'form-note ok';
+    note.textContent = 'Registration received! We will contact you to confirm your seat and payment.';
+    this.reset();
+  } catch (err) {
+    note.className = 'form-note err';
+    note.textContent = 'Could not register right now. Please chat us on WhatsApp instead.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Register Now';
+  }
+});
 
-      if (!response.ok || payload.ok === false) {
-        throw new Error(payload.message || "Submission failed");
-      }
-
-      formStatus.textContent = payload.message || config.successMessage;
-      formStatus.className = "form-status success";
-      form.reset();
-    } catch (error) {
-      formStatus.textContent = error.message || "We could not submit your form right now. Please try again in a moment.";
-      formStatus.className = "form-status error";
-    } finally {
-      form.removeAttribute("aria-busy");
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = defaultButtonLabel;
+// Summer Classes: clicking a course's "Register for this course" preselects it in the form.
+document.querySelectorAll('.course-btn[data-course]').forEach(a => {
+  a.addEventListener('click', () => {
+    const sel = document.getElementById('sCourse');
+    if (sel) {
+      const course = a.getAttribute('data-course').replace('&amp;', '&');
+      for (const opt of sel.options) {
+        if (opt.textContent.trim() === course) { sel.value = opt.value; break; }
       }
     }
   });
