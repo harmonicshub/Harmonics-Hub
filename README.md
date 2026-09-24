@@ -4,7 +4,7 @@
 
 Official website source for **HARMONICS HUB**, a creative technology company delivering brand design, web and software development, practical technology training, and managed IT support.
 
-Live domain: [harmonicshub.ng](https://harmonicshub.ng/)
+Live domain: [harmonicshub.com.ng](https://harmonicshub.com.ng/)
 
 ## Overview
 
@@ -158,9 +158,9 @@ This website represents the HARMONICS HUB brand and business offering. Content, 
 
 ## Contact
 
-Website: [harmonicshub.ng](https://harmonicshub.ng/)  
-Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
-Website: [harmonicshub.ng](https://harmonicshub.ng/)  
+Website: [harmonicshub.com.ng](https://harmonicshub.com.ng/)  
+Email: [hello@harmonicshub.com.ng](mailto:hello@harmonicshub.com.ng)
+Website: [harmonicshub.com.ng](https://harmonicshub.com.ng/)  
 Email: [hello@harmonicshub.ng](mailto:hello@harmonicshub.ng)
 
 ## License
